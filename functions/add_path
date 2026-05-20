@@ -1,0 +1,4 @@
+local p
+for p in "$@"; do
+  [[ -d "$p" ]] && path=($p $path)
+done

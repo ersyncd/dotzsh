@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+# ==============================================================================
+#  MAIN ZSH CONFIGURATION (Modular Bootstrapper)
+# ==============================================================================
+
+DOT_ZSH="$HOME/.zsh"
+ZSH_CONF_DIR="$DOT_ZSH/conf.d"
+ZSH_FUNC_DIR="$DOT_ZSH/functions"
+
+# Load modular configurations
+if [ -d "$ZSH_CONF_DIR" ]; then
+    for file in "$ZSH_CONF_DIR"/*.zsh(N); do
+        source "$file"
+    done
+    unset file
+fi
+
+# Load custom functions
+if [ -d "$ZSH_FUNC_DIR" ]; then
+    fpath=("$ZSH_FUNC_DIR" $fpath)
+    for func in "$ZSH_FUNC_DIR"/*(N:t); do
+        autoload -Uz "$func"
+    done
+    unset func
+fi
+
+# [UNIVERSAL] Load local/private configurations if exist
+if [ -f "$DOT_ZSH/.zshrc_local" ]; then
+    source "$DOT_ZSH/.zshrc_local"
+fi
+
+unset ZSH_CONF_DIR

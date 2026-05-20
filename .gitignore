@@ -1,0 +1,10 @@
+# Ignore automatic backup files
+*.bak
+
+# Ignore the plugin folder (because it is automatically downloaded by the install script)
+.zsh/plugins/
+
+# If you create a custom local secret file inside conf.d
+conf.d/*local.zsh
+
+.zshrc_local
