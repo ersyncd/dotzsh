@@ -14,7 +14,7 @@ A lightweight, modular Zsh configuration framework that keeps your shell setup t
 
 - Shell scripts: `bash` for installer/uninstaller
 - Zsh config snippets: `conf.d/*.zsh` and `functions/` for modular runtime
-- Optional tools integrated: `starship`, `fastfetch`, `fzf`, `lsd`, `fnm`, `bun`, `platformio`
+- Optional tools integrated: `starship`, `fastfetch`, `lsd`,
 
 ## Quick Install ✅
 
@@ -28,6 +28,9 @@ Run the installer from the repo root (it will copy config files to `~/.zsh`, ins
 Notes:
 - The script requires `zsh` and `git` to be available on your PATH.
 - If a previous `~/.zshrc` is detected and not managed by this installer, it will be backed up to `~/.zshrc.bak`.
+- If a previous `~/.zshrc` is detected the installer will compare it to the project's bootstrap:
+- If the files are identical, the installer will proceed without creating a backup.
+- If they differ, the existing `~/.zshrc` will be preserved by creating a backup at `~/.zshrc.bak` and you will be prompted before any overwrite.
 
 ## Uninstall 🧹
 
@@ -61,6 +64,7 @@ exec zsh
 - `uninstall.sh` — uninstaller script
 - `conf.d/` — modular zsh config snippets
 - `functions/` — autoloadable shell functions
+- `plugins/` — auto-cloned plugin repositories.
 
 ## Contributing 🤝
 
